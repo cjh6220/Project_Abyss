@@ -1,0 +1,15 @@
+
+{
+	"GameStageTable": [
+		{
+			"idx": 1,
+			"name": "slime",
+			"hp": 20
+		},
+		{
+			"idx": 2,
+			"name": "ant",
+			"hp": 30
+		}
+	]
+}

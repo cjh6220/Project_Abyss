@@ -1,0 +1,40 @@
+
+{
+	"Heroes": [
+		{
+			"Name": "Warrior",
+			"Health": 200,
+			"Age": 30
+		},
+		{
+			"Name": "Wizard",
+			"Health": 100,
+			"Age": 25
+		},
+		{
+			"Name": "Archer",
+			"Health": 150,
+			"Age": 28
+		}
+	],
+	"Weapons": [
+		{
+			"No": 0,
+			"Name": "Sword",
+			"Damage": 1.5,
+			"Price": 100
+		},
+		{
+			"No": 1,
+			"Name": "Bow",
+			"Damage": 0.7,
+			"Price": 40
+		},
+		{
+			"No": 2,
+			"Name": "Axe",
+			"Damage": 2,
+			"Price": 250
+		}
+	]
+}

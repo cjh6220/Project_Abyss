@@ -1,0 +1,6 @@
+D:\GGProject\Client\trunk\bowling\Tools\Excel2Binary\Excel2Binary\bin\Debug\Excel2Binary.exe
+D:\GGProject\Client\trunk\bowling\Tools\Excel2Binary\Excel2Binary\bin\Debug\Excel2Binary.pdb
+D:\GGProject\Client\trunk\bowling\Tools\Excel2Binary\Excel2Binary\obj\x86\Debug\Excel2Binary.csprojAssemblyReference.cache
+D:\GGProject\Client\trunk\bowling\Tools\Excel2Binary\Excel2Binary\obj\x86\Debug\Excel2Binary.csproj.CoreCompileInputs.cache
+D:\GGProject\Client\trunk\bowling\Tools\Excel2Binary\Excel2Binary\obj\x86\Debug\Excel2Binary.exe
+D:\GGProject\Client\trunk\bowling\Tools\Excel2Binary\Excel2Binary\obj\x86\Debug\Excel2Binary.pdb

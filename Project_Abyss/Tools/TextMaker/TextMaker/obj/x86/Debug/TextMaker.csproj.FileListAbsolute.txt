@@ -1,0 +1,5 @@
+I:\Project\Unity3d\SNG_4.0\Tools\TextMaker\TextMaker\obj\x86\Debug\ResolveAssemblyReference.cache
+I:\Project\Unity3d\SNG_4.0\Tools\TextMaker\TextMaker\bin\Debug\TextMaker.exe
+I:\Project\Unity3d\SNG_4.0\Tools\TextMaker\TextMaker\bin\Debug\TextMaker.pdb
+I:\Project\Unity3d\SNG_4.0\Tools\TextMaker\TextMaker\obj\x86\Debug\TextMaker.exe
+I:\Project\Unity3d\SNG_4.0\Tools\TextMaker\TextMaker\obj\x86\Debug\TextMaker.pdb
