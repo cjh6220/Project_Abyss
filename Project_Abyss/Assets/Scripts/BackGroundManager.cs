@@ -8,8 +8,8 @@ public class BackGroundManager : MonoBehaviour
     [SerializeField] protected GameObject[] backGround = new GameObject[3];
     [SerializeField] protected GameObject[] middleGround = new GameObject[3];
     public float spriteSize_X = 12.8f;
-    public float backGround_MoveSpeed = 1f;
-    public float middleGround_MoveSpeed = 3f;
+    public float backGround_MoveSpeed = -1f;
+    public float middleGround_MoveSpeed = 0.1f;
     public float backStartPos;
     public float middleStartPos;
     int mainBackGround;
@@ -69,22 +69,31 @@ public class BackGroundManager : MonoBehaviour
 
         if (player.transform.position.x >= 0 && player.transform.position.x <= 20f)
         {
+            //backGroundObject.transform.position += moveVelocity * middleGround_MoveSpeed * Time.deltaTime;
             for (int i = 0; i < backGround.Length; i++)
             {
-                backGround[i].transform.localPosition += moveVelocity * backGround_MoveSpeed * Time.deltaTime;
-                float iPosX = backGround[i].transform.localPosition.x;
-                if (iPosX <= backStartPos - spriteSize_X)
+                backGround[i].transform.position += moveVelocity * backGround_MoveSpeed * Time.deltaTime;
+                float iPosX = backGround[i].transform.position.x;
+                if (player.transform.position.x - iPosX > 14.8f && moveDir.x > 0)//iPosX <= player.transform.position.x - spriteSize_X)
                 {
-                    backGround[i].transform.localPosition = new Vector3(iPosX + (spriteSize_X * 3f), 0f, 0f);
+                    backGround[i].transform.position = new Vector3(iPosX + (spriteSize_X * 3f), backGround[i].transform.position.y, backGround[i].transform.position.z);
+                }
+                else if(player.transform.position.x - iPosX < -14.8f && moveDir.x < 0)
+                {
+                    backGround[i].transform.position = new Vector3(iPosX - (spriteSize_X * 3f), backGround[i].transform.position.y, backGround[i].transform.position.z);
                 }
             }
             for (int n = 0; n < middleGround.Length; n++)
             {
-                middleGround[n].transform.localPosition += moveVelocity * middleGround_MoveSpeed * Time.deltaTime;
-                float nPosX = middleGround[n].transform.localPosition.x;
-                if (nPosX <= middleStartPos - spriteSize_X)
+                middleGround[n].transform.position += moveVelocity * middleGround_MoveSpeed * Time.deltaTime;
+                float nPosX = middleGround[n].transform.position.x;
+                if (player.transform.position.x - nPosX > 14.8f && moveDir.x > 0)
                 {
-                    middleGround[n].transform.localPosition = new Vector3(nPosX + (spriteSize_X * 3f), 0f, 0f);
+                    middleGround[n].transform.position = new Vector3(nPosX + (spriteSize_X * 3f), middleGround[n].transform.position.y, middleGround[n].transform.position.z);
+                }
+                else if(player.transform.position.x - nPosX < -14.8f && moveDir.x < 0)
+                {
+                    middleGround[n].transform.position = new Vector3(nPosX - (spriteSize_X * 3f), middleGround[n].transform.position.y, middleGround[n].transform.position.z);
                 }
             }
         }
