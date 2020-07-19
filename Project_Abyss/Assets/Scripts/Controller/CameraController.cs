@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour
     {
         if (player.transform.position.x >= 0 && player.transform.position.x <= 20f)
         {
-            gameObject.transform.position = new Vector3(player.transform.position.x, 0f, -10f);
+            gameObject.transform.position = new Vector3(player.transform.position.x, 0, -10f);
         }
     }
 }
