@@ -74,3 +74,6 @@ InitTestScene*.unity
 # End of https://www.toptal.com/developers/gitignore/api/unity
 Project Abyss/Temp/UnityLockfile
 Project_Abyss/Temp/UnityLockfile
+
+Project_Abyss/Library/
+Project_Abyss/Temp/
