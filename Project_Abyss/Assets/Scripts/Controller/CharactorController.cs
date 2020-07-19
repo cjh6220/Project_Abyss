@@ -128,7 +128,7 @@ public class CharactorController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("콜리전 이름 = " + collision.transform.name);
+        //Debug.Log("콜리전 이름 = " + collision.transform.name);
         //Debug.Log("몇개 충돌중인가? = " + collision.contacts.Length);
         //if (collision.transform.name == "Ground")
         //{
@@ -151,38 +151,38 @@ public class CharactorController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("콜리전 스테이 이름 = " + collision.transform.name);
+        //Debug.Log("콜리전 스테이 이름 = " + collision.transform.name);
         //Debug.Log("몇개 충돌중인가? = " + collision.contacts.Length);
-        //if (collision.transform.name == "Ground")
-        //{            
-        //    for(int i = 0; i < collision.contacts.Length; i++)
-        //    {
-        //        if (collision.contacts[i].normal.y >= 0.95)
-        //        {
-        //            Debug.Log("바닥에 닿음");
-        //        }
-        //        else if (collision.contacts[i].normal.y <= -0.95)
-        //        {
-        //            Debug.Log("머리에 닿음");
-        //        }
+        if (collision.transform.name == "Ground")
+        {
+            for (int i = 0; i < collision.contacts.Length; i++)
+            {
+                if (collision.contacts[i].normal.y >= 0.95)
+                {
+                    //Debug.Log("바닥에 닿음");
+                }
+                else if (collision.contacts[i].normal.y <= -0.95)
+                {
+                    //Debug.Log("머리에 닿음");
+                }
 
-        //        if (collision.contacts[i].normal.x >= 0.95)
-        //        {
-        //            Debug.Log("왼쪽 몸에 닿음");
-        //            isContackLeft = true;
-        //        }
-        //        else if (collision.contacts[i].normal.x <= -0.95)
-        //        {
-        //            Debug.Log("오른쪽 몸에 닿음");
-        //            isContackRight = true;
-        //        }
-        //        else
-        //        {
-        //            isContackLeft = false;
-        //            isContackRight = false;
-        //        }
-        //    }
-        //}
+                if (collision.contacts[i].normal.x >= 0.95)
+                {
+                    //Debug.Log("왼쪽 몸에 닿음");
+                    isContackLeft = true;
+                }
+                else if (collision.contacts[i].normal.x <= -0.95)
+                {
+                    //Debug.Log("오른쪽 몸에 닿음");
+                    isContackRight = true;
+                }
+                else
+                {
+                    isContackLeft = false;
+                    isContackRight = false;
+                }
+            }
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
