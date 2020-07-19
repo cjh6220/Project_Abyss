@@ -89,7 +89,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1047451977092623084}
+  - component: {fileID: 4484692338504049301}
   - component: {fileID: 1047451977092623083}
   m_Layer: 0
   m_Name: Back_Ground_0
@@ -98,7 +98,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1047451977092623084
+--- !u!4 &4484692338504049301
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -545,7 +545,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1047451977092623084}
+  - {fileID: 4484692338504049301}
   - {fileID: 1047451977981656163}
   - {fileID: 1047451978822475887}
   m_Father: {fileID: 1047451978348552889}

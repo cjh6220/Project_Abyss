@@ -50,6 +50,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.dwlt
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -77,3 +78,4 @@ Project_Abyss/Temp/UnityLockfile
 
 Project_Abyss/Library/
 Project_Abyss/Temp/
+Project_Abyss/Library/SourceAssetDB

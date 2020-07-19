@@ -1,6 +1,6 @@
+@echo off
 
-
-set PROJECT_DIR=%CD%\..\..\
+set PROJECT_DIR=%CD%\..\..
 set TOOLS_DIR=%PROJECT_DIR%\Tools
 
 set OUTPUT_DIR=%CD%\output
