@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map1_1 : MonoBehaviour
+public class MonsterTable : TableManager
 {
     // Start is called before the first frame update
     void Start()
     {
-        //TableManager.Instance.Init();
-        BackGroundManager.Instance.Init();
-        GroundController.Instance.Init();
+        
     }
 
     // Update is called once per frame

@@ -64,33 +64,38 @@ public class TableManager : MonoBehaviour
 
     }
 
-    public void LoadAllTable()
+    public virtual void InitDataSheet()
     {
-        if (isLoadedAllData) return;
 
-        string path = "";
-        path = "Table/";
-
-        for(int i = 0; i < SHEET_TOTAL_COUNT; i++)
-        {
-            if (null == arrDataSheet[i])
-                arrDataSheet[i] = new DataSheet();
-
-            LoadDataSheet(path + tableName[i], tableName[i], arrDataSheet[i]);
-        }
-
-        isLoadedAllData = true;
-
-        Debug.Log("[TableManager] LoadAllDataTable Complete !!");
     }
 
-    public static void LoadDataSheet(string filePath, string sheetName, DataSheet ds)
-    {
-        string path = filePath;
+    //public void LoadAllTable()
+    //{
+    //    if (isLoadedAllData) return;
 
-        Object prefabobj = null;
+    //    string path = "";
+    //    path = "Table/";
 
-    }
+    //    for(int i = 0; i < SHEET_TOTAL_COUNT; i++)
+    //    {
+    //        if (null == arrDataSheet[i])
+    //            arrDataSheet[i] = new DataSheet();
+
+    //        LoadDataSheet(path + tableName[i], tableName[i], arrDataSheet[i]);
+    //    }
+
+    //    isLoadedAllData = true;
+
+    //    Debug.Log("[TableManager] LoadAllDataTable Complete !!");
+    //}
+
+    //public static void LoadDataSheet(string filePath, string sheetName, DataSheet ds)
+    //{
+    //    //string path = filePath;
+
+    //    //Object prefabobj = null;
+        
+    //}
     
     public void GetTable()
     {
