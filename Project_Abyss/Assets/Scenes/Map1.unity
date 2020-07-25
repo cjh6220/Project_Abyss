@@ -612,6 +612,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePower: 5
   jumpPower: 9
+  isContackLeft: 0
+  isContackRight: 0
 --- !u!212 &537109760
 SpriteRenderer:
   m_ObjectHideFlags: 0

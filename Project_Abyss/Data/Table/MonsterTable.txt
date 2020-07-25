@@ -1,15 +1,12 @@
 
 {
-	"GameStageTable": [
+	"Sheet1": [
 		{
 			"idx": 1,
 			"name": "slime",
-			"hp": 20
-		},
-		{
-			"idx": 2,
-			"name": "ant",
-			"hp": 30
+			"hp": 20,
+			"attack_speed": 1,
+			"move_speed": 5
 		}
 	]
 }
