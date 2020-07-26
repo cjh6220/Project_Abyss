@@ -69,34 +69,37 @@ public class TableManager : MonoBehaviour
 
     }
 
-    //public void LoadAllTable()
-    //{
-    //    if (isLoadedAllData) return;
+    public void LoadAllTable()
+    {
+        //if (isLoadedAllData) return;
 
-    //    string path = "";
-    //    path = "Table/";
+        //string path = "";
+        //path = "Table/";
 
-    //    for(int i = 0; i < SHEET_TOTAL_COUNT; i++)
-    //    {
-    //        if (null == arrDataSheet[i])
-    //            arrDataSheet[i] = new DataSheet();
+        //for (int i = 0; i < SHEET_TOTAL_COUNT; i++)
+        //{
+        //    if (null == arrDataSheet[i])
+        //        arrDataSheet[i] = new DataSheet();
 
-    //        LoadDataSheet(path + tableName[i], tableName[i], arrDataSheet[i]);
-    //    }
+        //    LoadDataSheet(path + tableName[i], tableName[i], arrDataSheet[i]);
+        //}
 
-    //    isLoadedAllData = true;
+        //isLoadedAllData = true;
 
-    //    Debug.Log("[TableManager] LoadAllDataTable Complete !!");
-    //}
+        //Debug.Log("[TableManager] LoadAllDataTable Complete !!");
+        //string path = "Table/MonsterStat";
+        //m_StatData = Resources.Load(path) as MonsterStat;
+        
+    }
 
     //public static void LoadDataSheet(string filePath, string sheetName, DataSheet ds)
     //{
     //    //string path = filePath;
 
     //    //Object prefabobj = null;
-        
+
     //}
-    
+
     public void GetTable()
     {
         //string path = "Table/" + tableName.ToString();

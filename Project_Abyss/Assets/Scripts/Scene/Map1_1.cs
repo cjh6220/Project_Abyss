@@ -8,8 +8,7 @@ public class Map1_1 : MonoBehaviour
     void Start()
     {
         //TableManager.Instance.Init();
-        BackGroundManager.Instance.Init();
-        GroundController.Instance.Init();
+        BackGroundManager.Instance.Init();        
     }
 
     // Update is called once per frame

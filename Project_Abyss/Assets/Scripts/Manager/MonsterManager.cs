@@ -17,11 +17,16 @@ public class MonsterManager : MonoBehaviour
             return instance;
         }
     }
+    void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(this);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        LoadMonsterTable();
     }
 
     // Update is called once per frame
@@ -32,6 +37,27 @@ public class MonsterManager : MonoBehaviour
 
     void LoadMonsterTable()
     {
+        if (m_MonsterStatData != null)
+            return;
+
         m_MonsterStatData = Resources.Load("Table/MonsterStat") as MonsterStat;
+    }
+
+    public MonsterStatData GetMonsterStat(string name)
+    {
+        MonsterStatData stat = null;
+        if(m_MonsterStatData == null)
+        {
+            LoadMonsterTable();
+        }
+        for(int i = 0; i < m_MonsterStatData.dataArray.Length; i ++)
+        {
+            if(m_MonsterStatData.dataArray[i].Name == name)
+            {
+                stat = m_MonsterStatData.dataArray[i];
+                return stat;
+            }
+        }
+        return stat;
     }
 }
