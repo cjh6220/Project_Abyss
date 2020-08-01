@@ -23,7 +23,7 @@ public class CharactorController : MonoBehaviour
     void Start()
     {
         rig = gameObject.GetComponent<Rigidbody2D>();
-        ani = gameObject.GetComponent<Animator>();
+        ani = this.gameObject.transform.Find("Defalt_Body").GetComponent<Animator>();
         BoxCollider2D = gameObject.GetComponent<BoxCollider2D>();
         rayCastObj = gameObject.transform.GetChild(0).gameObject;        
     }
