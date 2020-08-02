@@ -18,6 +18,10 @@ MonoBehaviour:
   - idx: 1
     name: Slime
     hp: 20
+    movespd: 1
+    fsmtime: 5
   - idx: 2
     name: Ant
     hp: 50
+    movespd: 0.5
+    fsmtime: 3

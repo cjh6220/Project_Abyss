@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1166726425}
   - component: {fileID: 7590072565336700611}
   - component: {fileID: 1166726429}
-  m_Layer: 0
+  - component: {fileID: 217408330}
+  m_Layer: 9
   m_Name: Monster_Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +100,10 @@ MonoBehaviour:
   mMonsterName: 
   mMonsterHP: 0
   mMonsterIdx: 0
+  mMoveSpd: 0
+  mFsmTime: 0
+  mAnimator: {fileID: 0}
+  mRigidbody: {fileID: 0}
 --- !u!61 &7590072565336700611
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -112,11 +117,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: -0.05}
+  m_Offset: {x: -0.01, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.04, y: 1.04}
+    oldSize: {x: 1.08, y: 1.19}
     newSize: {x: 1.04, y: 1.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,3 +151,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &217408330
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211202807071487039}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2370fa1da7df58488ebb29adfafc778, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
