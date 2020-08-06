@@ -20,4 +20,12 @@ public class MonsterStatData
   int hp;
   public int HP { get {return hp; } set { this.hp = value;} }
   
+  [SerializeField]
+  float movespd;
+  public float Movespd { get {return movespd; } set { this.movespd = value;} }
+  
+  [SerializeField]
+  float fsmtime;
+  public float Fsmtime { get {return fsmtime; } set { this.fsmtime = value;} }
+  
 }

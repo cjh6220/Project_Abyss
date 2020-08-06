@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum eMonster_State
 {
-    eState_Before_Swawn,
+    eState_Before_Spawn,
     eState_Idle,
     eState_Move,
     eState_Attack,    

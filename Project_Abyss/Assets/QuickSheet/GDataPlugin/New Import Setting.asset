@@ -30,4 +30,12 @@ MonoBehaviour:
     name: HP
     isEnable: 0
     isArray: 0
+  - type: 5
+    name: MoveSpd
+    isEnable: 0
+    isArray: 0
+  - type: 5
+    name: FsmTime
+    isEnable: 0
+    isArray: 0
   AccessCode: 
