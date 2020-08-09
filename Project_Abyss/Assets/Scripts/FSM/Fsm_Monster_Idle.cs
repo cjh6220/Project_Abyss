@@ -101,17 +101,22 @@ public class Fsm_Idle_Monster : FsmState<eMonster_State>
 
     void CheckObstacle()
     {
-        RaycastHit2D rayHit;
+        RaycastHit2D raySideHit;
+        RaycastHit2D rayBottomHit;
+        Vector3 forwardPos;
         switch (curMoveVec)
         {
             case -1:
+                forwardPos = new Vector3(mRigidbody2D.position.x - 0.6f, mRigidbody2D.position.y);
                 Debug.DrawRay(mRigidbody2D.position, Vector3.left * mBoxCollider2D.size.x * 0.6f, Color.red);
-                rayHit = Physics2D.Raycast(mRigidbody2D.position, Vector3.left, 1, LayerMask.GetMask("Ground"));
+                Debug.DrawRay(forwardPos, Vector3.down * mBoxCollider2D.size.y, Color.red);
+                raySideHit = Physics2D.Raycast(mRigidbody2D.position, Vector3.left, mBoxCollider2D.size.x * 0.6f, LayerMask.GetMask("Ground"));
+                rayBottomHit = Physics2D.Raycast(forwardPos, Vector3.down, mBoxCollider2D.size.y, LayerMask.GetMask("Ground"));
                 //RaycastHit2D rayHit = Physics2D.Raycast(mRigidbody2D.position, Vector3.left * mBoxCollider2D.size * 0.6f);
-                if(rayHit.collider != null)
+                if (raySideHit.collider != null || rayBottomHit.collider == null)
                 {
-                    if(rayHit.distance < mBoxCollider2D.size.x * 0.6f)
-                    {
+                    //if(raySideHit.distance < mBoxCollider2D.size.x * 0.6f)
+                    //{
                         Debug.Log("벽이다");
                         curMoveVec = Random.Range(0, 2);
                         if(curMoveVec == 1)
@@ -124,8 +129,12 @@ public class Fsm_Idle_Monster : FsmState<eMonster_State>
                             mAnimator.SetBool("IsMove", false);
                         }   
                         moveAniTime = 0;
-                    }
+                    //}
                 }
+                //if(rayBottomHit.collider == null)
+                //{
+                //    Debug.Log("바닥없음");
+                //}
                 break;
 
             case 0:
@@ -133,12 +142,15 @@ public class Fsm_Idle_Monster : FsmState<eMonster_State>
                 break;
 
             case 1:
-                Debug.DrawRay(mRigidbody2D.position, Vector3.right * mBoxCollider2D.size * 0.6f, Color.red);
-                rayHit = Physics2D.Raycast(mRigidbody2D.position, Vector3.right, 1, LayerMask.GetMask("Ground"));
-                if (rayHit.collider != null)
+                forwardPos = new Vector3(mRigidbody2D.position.x + 0.6f, mRigidbody2D.position.y);
+                Debug.DrawRay(mRigidbody2D.position, Vector3.right * mBoxCollider2D.size.x * 0.6f, Color.red);
+                Debug.DrawRay(forwardPos, Vector3.down * mBoxCollider2D.size.y, Color.red);
+                raySideHit = Physics2D.Raycast(mRigidbody2D.position, Vector3.right, mBoxCollider2D.size.x * 0.6f, LayerMask.GetMask("Ground"));
+                rayBottomHit = Physics2D.Raycast(forwardPos, Vector3.down, mBoxCollider2D.size.y, LayerMask.GetMask("Ground"));
+                if (raySideHit.collider != null || rayBottomHit.collider == null)
                 {
-                    if (rayHit.distance < mBoxCollider2D.size.x * 0.6f)
-                    {
+                    //if (raySideHit.distance < mBoxCollider2D.size.x * 0.6f)
+                    //{
                         Debug.Log("벽이다");
                         curMoveVec = Random.Range(-1, 1);
                         if (curMoveVec == -1)
@@ -151,8 +163,12 @@ public class Fsm_Idle_Monster : FsmState<eMonster_State>
                             mAnimator.SetBool("IsMove", false);
                         }
                         moveAniTime = 0;
-                    }
+                    //}
                 }
+                //if (rayBottomHit.collider == null)
+                //{
+                //    Debug.Log("바닥없음");
+                //}
                 break;
         }
         
