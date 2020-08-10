@@ -17,15 +17,78 @@ public class CharactorController : MonoBehaviour
     RaycastHit2D hit2D;
     [SerializeField]public float rayLength = 0.2f;
     [SerializeField]public VariableJoystick variableJoystick;
-    
+
+    [SerializeField] private SpriteRenderer top;
+    [SerializeField] private SpriteRenderer bottom;
+    [SerializeField] private SpriteRenderer gloves_L;
+    [SerializeField] private SpriteRenderer gloves_R;
+    [SerializeField] private SpriteRenderer shoes_L;
+    [SerializeField] private SpriteRenderer shoes_R;
 
 
+    private List<Sprite> topRes = new List<Sprite>();
+    private List<Sprite> bottomRes = new List<Sprite>();
+    private List<Sprite> glovesRes_L = new List<Sprite>();
+    private List<Sprite> glovesRes_R = new List<Sprite>();
+    private List<Sprite> shoesRes_L = new List<Sprite>();
+    private List<Sprite> shoesRes_R = new List<Sprite>();
     void Start()
     {
         rig = gameObject.GetComponent<Rigidbody2D>();
         ani = gameObject.GetComponent<Animator>();
         BoxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-        rayCastObj = gameObject.transform.GetChild(0).gameObject;        
+        rayCastObj = gameObject.transform.GetChild(0).gameObject;
+        InitRes();
+    }
+
+    void InitRes()
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            if (i == 0)
+            {
+
+                topRes.Add(Resources.Load<Sprite>("Graphic/Equipment/Idle/Top/Miner_top_normal"));
+                bottomRes.Add(Resources.Load<Sprite>("Graphic/Equipment/Idle/Bottom/Miner_bottom_normal"));
+                glovesRes_L.Add(Resources.Load<Sprite>("Graphic/Equipment/Idle/Gloves/Miner_normal_gloves_L"));
+                glovesRes_R.Add(Resources.Load<Sprite>("Graphic/Equipment/Idle/Gloves/Miner_normal_gloves_R"));
+                shoesRes_L.Add(Resources.Load<Sprite>("Graphic/Equipment/Idle/Shoes/Miner_normal_shoes_L"));
+                shoesRes_R.Add(Resources.Load<Sprite>("Graphic/Equipment/Idle/Shoes/Miner_normal_shoes_R"));
+
+                //topRes[i] = Resources.Load<Sprite>("Graphic/Equipment/Idle/Top/Miner_top_normal");                
+                //bottomRes[i] = Resources.Load<Sprite>("Graphic/Equipment/Idle/Bottom/Miner_bottom_normal");
+                //glovesRes_L[i] = Resources.Load<Sprite>("Graphic/Equipment/Idle/Gloves/Miner_normal_gloves_L");
+                //glovesRes_R[i] = Resources.Load<Sprite>("Graphic/Equipment/Idle/Gloves/Miner_normal_gloves_R");
+                //shoesRes_L[i] = Resources.Load<Sprite>("Graphic/Equipment/Idle/Shoes/Miner_normal_shoes_L");
+                //shoesRes_R[i] = Resources.Load<Sprite>("Graphic/Equipment/Idle/Shoes/Miner_normal_shoes_R");
+            }
+            else
+            {
+                topRes.Add(Resources.Load<Sprite>("Graphic/Equipment/Walk/Top/Miner_top_normal_walk_" + i));
+                bottomRes.Add(Resources.Load<Sprite>("Graphic/Equipment/Walk/Bottom/Miner_bottom_normal_walk_" + i));
+                if (i != 4)
+                {
+                    glovesRes_L.Add(Resources.Load<Sprite>("Graphic/Equipment/Walk/Gloves/Miner_normal_gloves_walk_L_" + i));
+                }                
+                glovesRes_R.Add(Resources.Load<Sprite>("Graphic/Equipment/Walk/Gloves/Miner_normal_gloves_walk_R_" + i));
+                shoesRes_L.Add(Resources.Load<Sprite>("Graphic/Equipment/Walk/Shoes/Miner_normal_shoes_walk_L_" + i));
+                shoesRes_R.Add(Resources.Load<Sprite>("Graphic/Equipment/Walk/Shoes/Miner_normal_shoes_walk_R_" + i));
+
+                //topRes[i] = Resources.Load<Sprite>("Graphic/Equipment/Walk/Top/Miner_top_normal_walk_" + i);
+                //bottomRes[i] = Resources.Load<Sprite>("Graphic/Equipment/Walk/Bottom/Miner_bottom_normal_walk_" + i);
+                //if (i != 4)
+                //{
+                //    glovesRes_L[i] = Resources.Load<Sprite>("Graphic/Equipment/Walk/Gloves/Miner_normal_gloves_walk_L_" + i);
+                //}
+                //else
+                //{
+                //    glovesRes_L[i] = null;
+                //}
+                //glovesRes_R[i] = Resources.Load<Sprite>("Graphic/Equipment/Walk/Gloves/Miner_normal_gloves_walk_R_" + i);
+                //shoesRes_L[i] = Resources.Load<Sprite>("Graphic/Equipment/Walk/Shoes/Miner_normal_shoes_walk_L_" + i);
+                //shoesRes_R[i] = Resources.Load<Sprite>("Graphic/Equipment/Walk/Shoes/Miner_normal_shoes_walk_R_" + i);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -203,6 +266,32 @@ public class CharactorController : MonoBehaviour
         }
     }
 
+    public void MoveEquipmentChange(int i)
+    {
+        top.sprite = topRes[i];
+        bottom.sprite = bottomRes[i];
+        if (i != 4)
+        {
+            gloves_L.sprite = glovesRes_L[i];
+        }
+        else
+        {
+            gloves_L.sprite = null;
+        }
+        gloves_R.sprite = glovesRes_R[i];
+        shoes_L.sprite = shoesRes_L[i];
+        shoes_R.sprite = shoesRes_R[i];
+    }
+
+    public void IdleEquipmentChange()
+    {
+        top.sprite = Resources.Load<Sprite>("Graphic/Equipment/Idle/Top/Miner_top_normal");
+        bottom.sprite = Resources.Load<Sprite>("Graphic/Equipment/Idle/Bottom/Miner_bottom_normal");
+        gloves_L.sprite = Resources.Load<Sprite>("Graphic/Equipment/Idle/Gloves/Miner_normal_gloves_L");
+        gloves_R.sprite = Resources.Load<Sprite>("Graphic/Equipment/Idle/Gloves/Miner_normal_gloves_R");
+        shoes_L.sprite = Resources.Load<Sprite>("Graphic/Equipment/Idle/Shoes/Miner_normal_shoes_L");
+        shoes_R.sprite = Resources.Load<Sprite>("Graphic/Equipment/Idle/Shoes/Miner_normal_shoes_R");
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
         //Debug.Log("콜리전 스테이 이름 = " + collision.transform.name);
