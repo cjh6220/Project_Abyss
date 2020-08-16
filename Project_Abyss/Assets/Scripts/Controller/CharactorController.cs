@@ -229,10 +229,11 @@ public class CharactorController : MonoBehaviour
     #region //Jump 관련 코드
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("점프키 누름");
-            if (jumpCount == 0 && isJumping == false)
+            JumpRayCheck();
+            if (jumpCount == 0 && isJumping == false && isFarming == false)
             {
                 rig.velocity = Vector2.zero;
                 Vector2 jumpVelocity = new Vector2(0, jumpPower);
@@ -242,9 +243,10 @@ public class CharactorController : MonoBehaviour
                 ani.SetBool("IsDoubleJumpUp", false);
                 ani.SetBool("IsDoubleJumpDown", false);
                 jumpCount += 1;
+                isJumping = true;
                 Debug.Log("1단 점프키 누름");
             }
-            else if(jumpCount == 1)
+            else if(jumpCount == 1 && isJumping && isFarming == false)
             {
                 rig.velocity = Vector2.zero;
                 Vector2 jumpVelocity = new Vector2(0, jumpPower);
@@ -254,6 +256,7 @@ public class CharactorController : MonoBehaviour
                 ani.SetBool("IsDoubleJumpUp", true);
                 ani.SetBool("IsDoubleJumpDown", false);
                 jumpCount += 1;
+                isJumping = true;
                 Debug.Log("2단 점프키 누름");
             }
         }        
@@ -262,7 +265,8 @@ public class CharactorController : MonoBehaviour
     public void ClickJump()
     {
         Debug.Log("점프키 누름");
-        if (jumpCount == 0 && isJumping == false)
+        JumpRayCheck();
+        if (jumpCount == 0 && isJumping == false && isFarming == false)
         {
             rig.velocity = Vector2.zero;
             Vector2 jumpVelocity = new Vector2(0, jumpPower);
@@ -272,9 +276,10 @@ public class CharactorController : MonoBehaviour
             ani.SetBool("IsDoubleJumpUp", false);
             ani.SetBool("IsDoubleJumpDown", false);
             jumpCount += 1;
+            isJumping = true;
             Debug.Log("1단 점프키 누름");
         }
-        else if (jumpCount == 1)
+        else if (jumpCount == 1 && isJumping && isFarming == false)
         {
             rig.velocity = Vector2.zero;
             Vector2 jumpVelocity = new Vector2(0, jumpPower);
@@ -284,6 +289,7 @@ public class CharactorController : MonoBehaviour
             ani.SetBool("IsDoubleJumpUp", true);
             ani.SetBool("IsDoubleJumpDown", false);
             jumpCount += 1;
+            isJumping = true;
             Debug.Log("2단 점프키 누름");
         }
     }
@@ -305,7 +311,9 @@ public class CharactorController : MonoBehaviour
             isJumping = false;
             isJumpDownEnd = true;
             jumpCount = 0;
+            ani.SetBool("IsJumpUp", false);
             ani.SetBool("IsJumpDown", false);
+            ani.SetBool("IsDoubleJumpUp", false);
             ani.SetBool("IsDoubleJumpDown", false);
             ani.SetBool("IsJumpDownEnd", true);            
             //return true;
@@ -430,24 +438,38 @@ public class CharactorController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            if(isJumping == false)
+            if(isJumping == false && isJumpDownEnd)
             {
                 isFarming = true;
                 weaponParticle.enabled = true;
-                ani.SetTrigger("IsFarming");
+                ani.SetBool("IsFarming", true);
                 Debug.Log("키보드로 파밍");
+            }
+            else
+            {
+                isFarming = false;
+                weaponParticle.enabled = false;
+                ani.SetBool("IsFarming", false);
+                Debug.Log("키보드로 파밍 눌렀는데 파밍 불가능한 상태");
             }
         }      
     }
 
     public void ClickUIFarming()
     {
-        if (isJumping == false)
+        if (isJumping == false && isJumpDownEnd)
         {
             isFarming = true;
             weaponParticle.enabled = true;
-            ani.SetTrigger("IsFarming");
+            ani.SetBool("IsFarming", true);
             Debug.Log("클릭으로 파밍");
+        }
+        else
+        {
+            isFarming = false;
+            weaponParticle.enabled = false;
+            ani.SetBool("IsFarming", false);
+            Debug.Log("클릭으로 파밍 눌렀는데 파밍 불가능한 상태");
         }
     }
 
