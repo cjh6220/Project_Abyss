@@ -117,7 +117,7 @@ public class Fsm_Idle_Monster : FsmState<eMonster_State>
                 {
                     //if(raySideHit.distance < mBoxCollider2D.size.x * 0.6f)
                     //{
-                        Debug.Log("벽이다");
+                        //Debug.Log("벽이다");
                         curMoveVec = Random.Range(0, 2);
                         if(curMoveVec == 1)
                         {
@@ -151,7 +151,7 @@ public class Fsm_Idle_Monster : FsmState<eMonster_State>
                 {
                     //if (raySideHit.distance < mBoxCollider2D.size.x * 0.6f)
                     //{
-                        Debug.Log("벽이다");
+                        //Debug.Log("벽이다");
                         curMoveVec = Random.Range(-1, 1);
                         if (curMoveVec == -1)
                         {

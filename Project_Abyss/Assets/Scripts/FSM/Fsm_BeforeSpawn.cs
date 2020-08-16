@@ -14,9 +14,5 @@ public class Fsm_BeforeSpawn : FsmState<eMonster_State>
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

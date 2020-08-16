@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0bf820261ce1a43b1f93ffa575e5b5, type: 3}
+  m_Name: EquipmentTable
+  m_EditorClassIdentifier: 
+  SheetName: AbyssMonsterTable
+  WorksheetName: EquipmentTable
+  dataArray:
+  - idx: 1
+    name: Helmet
+    type: head
+    hp: 0
+    def: 10
+    atk: 0
+    spd: 0
+  - idx: 2
+    name: normal_top
+    type: top
+    hp: 100
+    def: 15
+    atk: 10
+    spd: 0
+  - idx: 3
+    name: normal_bottom
+    type: bottom
+    hp: 50
+    def: 10
+    atk: 0
+    spd: 0
+  - idx: 4
+    name: normal_gloves
+    type: gloves
+    hp: 0
+    def: 10
+    atk: 10
+    spd: 0
+  - idx: 5
+    name: normal_shoes
+    type: shoes
+    hp: 50
+    def: 0
+    atk: 0
+    spd: 3
