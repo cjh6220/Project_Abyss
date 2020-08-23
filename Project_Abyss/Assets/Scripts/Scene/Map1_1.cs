@@ -11,6 +11,7 @@ public class Map1_1 : MonoBehaviour
         BackGroundManager.Instance.Init();
         UIManager.Instance.Init();
         AbyssGameManager.Instance.Init();
+        ParticleManager.Instance.Init();
     }
 
     // Update is called once per frame

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Pick
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Enemy
   - Player
   - PlayerDamaged
-  - 
-  - 
+  - Mineral
+  - Pick
   - 
   - 
   - 

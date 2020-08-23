@@ -24,6 +24,8 @@ public class CharactorController : MonoBehaviour
     [SerializeField]public float rayLength = 0.2f;
     [SerializeField]public VariableJoystick variableJoystick;
 
+    //-------------장비 sprite-------------------
+    [SerializeField] private SpriteRenderer head;
     [SerializeField] private SpriteRenderer top;
     [SerializeField] private SpriteRenderer bottom;
     [SerializeField] private SpriteRenderer gloves_L;
@@ -32,20 +34,23 @@ public class CharactorController : MonoBehaviour
     [SerializeField] private SpriteRenderer shoes_R;
     [SerializeField] private SpriteRenderer weaponParticle;
 
-
+    //------------장비 sprite List-------------------
     private List<Sprite> topRes = new List<Sprite>();
     private List<Sprite> bottomRes = new List<Sprite>();
     private List<Sprite> glovesRes_L = new List<Sprite>();
     private List<Sprite> glovesRes_R = new List<Sprite>();
     private List<Sprite> shoesRes_L = new List<Sprite>();
     private List<Sprite> shoesRes_R = new List<Sprite>();
+
+    [SerializeField] private BoxCollider2D pickCollider;
     void Start()
     {
         rig = gameObject.GetComponent<Rigidbody2D>();
         ani = gameObject.GetComponent<Animator>();
         BoxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-        rayCastObj = gameObject.transform.GetChild(0).gameObject;
+        rayCastObj = gameObject.transform.GetChild(0).gameObject;        
         weaponParticle.enabled = false;
+        pickCollider.enabled = false;
         InitRes();
     }
 
@@ -55,6 +60,7 @@ public class CharactorController : MonoBehaviour
         {
             if (i == 0) // idle 상태 이닛
             {
+                head.sprite = Resources.Load<Sprite>("Graphic/Equipment/Idle/Head/Helmet");
                 topRes.Add(Resources.Load<Sprite>("Graphic/Equipment/Idle/Top/Miner_top_idle_normal"));
                 bottomRes.Add(Resources.Load<Sprite>("Graphic/Equipment/Idle/Bottom/Miner_bottom_idle_normal"));
                 glovesRes_L.Add(Resources.Load<Sprite>("Graphic/Equipment/Idle/Gloves/Miner_gloves_idle_normal_L"));
@@ -231,7 +237,7 @@ public class CharactorController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Debug.Log("점프키 누름");
+            //Debug.Log("점프키 누름");
             JumpRayCheck();
             if (jumpCount == 0 && isJumping == false && isFarming == false)
             {
@@ -244,7 +250,7 @@ public class CharactorController : MonoBehaviour
                 ani.SetBool("IsDoubleJumpDown", false);
                 jumpCount += 1;
                 isJumping = true;
-                Debug.Log("1단 점프키 누름");
+                //Debug.Log("1단 점프키 누름");
             }
             else if(jumpCount == 1 && isJumping && isFarming == false)
             {
@@ -257,14 +263,14 @@ public class CharactorController : MonoBehaviour
                 ani.SetBool("IsDoubleJumpDown", false);
                 jumpCount += 1;
                 isJumping = true;
-                Debug.Log("2단 점프키 누름");
+                //Debug.Log("2단 점프키 누름");
             }
         }        
     }
 
     public void ClickJump()
     {
-        Debug.Log("점프키 누름");
+        //Debug.Log("점프키 누름");
         JumpRayCheck();
         if (jumpCount == 0 && isJumping == false && isFarming == false)
         {
@@ -277,7 +283,7 @@ public class CharactorController : MonoBehaviour
             ani.SetBool("IsDoubleJumpDown", false);
             jumpCount += 1;
             isJumping = true;
-            Debug.Log("1단 점프키 누름");
+            //Debug.Log("1단 점프키 누름");
         }
         else if (jumpCount == 1 && isJumping && isFarming == false)
         {
@@ -290,7 +296,7 @@ public class CharactorController : MonoBehaviour
             ani.SetBool("IsDoubleJumpDown", false);
             jumpCount += 1;
             isJumping = true;
-            Debug.Log("2단 점프키 누름");
+            //Debug.Log("2단 점프키 누름");
         }
     }
     
@@ -307,7 +313,7 @@ public class CharactorController : MonoBehaviour
         
         if(rayRight.collider != null || rayLeft.collider != null)
         {
-            Debug.Log("점프 체크 결과 true");
+            //Debug.Log("점프 체크 결과 true");
             isJumping = false;
             isJumpDownEnd = true;
             jumpCount = 0;
@@ -320,7 +326,7 @@ public class CharactorController : MonoBehaviour
         }
         else
         {
-            Debug.Log("점프 체크 결과 false");
+            //Debug.Log("점프 체크 결과 false");
             ani.SetBool("IsJumpDownEnd", false);
             isJumping = true;
             //return false;
@@ -341,7 +347,7 @@ public class CharactorController : MonoBehaviour
             ani.SetBool("IsDoubleJumpUp", false);
             ani.SetBool("IsDoubleJumpDown", false);
             jumpCount = 0;
-            Debug.Log("1단 점프 내려감 끝");
+            //Debug.Log("1단 점프 내려감 끝");
         }
         else if(jumpCount == 2)
         {
@@ -350,7 +356,7 @@ public class CharactorController : MonoBehaviour
             ani.SetBool("IsDoubleJumpUp", false);
             ani.SetBool("IsDoubleJumpDown", true);
             jumpCount = 0;
-            Debug.Log("2단 점프 내려감 끝");
+            //Debug.Log("2단 점프 내려감 끝");
         }
     }
 
@@ -362,7 +368,7 @@ public class CharactorController : MonoBehaviour
             ani.SetBool("IsJumpDown", true);
             ani.SetBool("IsDoubleJumpUp", false);
             ani.SetBool("IsDoubleJumpDown", false);
-            Debug.Log("1단 점프 올라감 끝");
+            //Debug.Log("1단 점프 올라감 끝");
         }
         else if(jumpCount == 2)
         {
@@ -370,7 +376,7 @@ public class CharactorController : MonoBehaviour
             ani.SetBool("IsJumpDown", false);
             ani.SetBool("IsDoubleJumpUp", false);
             ani.SetBool("IsDoubleJumpDown", true);
-            Debug.Log("2단 점프 올라감 끝");
+            //Debug.Log("2단 점프 올라감 끝");
         }
     }
     #endregion
@@ -443,14 +449,14 @@ public class CharactorController : MonoBehaviour
                 isFarming = true;
                 weaponParticle.enabled = true;
                 ani.SetBool("IsFarming", true);
-                Debug.Log("키보드로 파밍");
+                //Debug.Log("키보드로 파밍");
             }
             else
             {
                 isFarming = false;
                 weaponParticle.enabled = false;
                 ani.SetBool("IsFarming", false);
-                Debug.Log("키보드로 파밍 눌렀는데 파밍 불가능한 상태");
+                //Debug.Log("키보드로 파밍 눌렀는데 파밍 불가능한 상태");
             }
         }      
     }
@@ -462,14 +468,14 @@ public class CharactorController : MonoBehaviour
             isFarming = true;
             weaponParticle.enabled = true;
             ani.SetBool("IsFarming", true);
-            Debug.Log("클릭으로 파밍");
+            //Debug.Log("클릭으로 파밍");
         }
         else
         {
             isFarming = false;
             weaponParticle.enabled = false;
             ani.SetBool("IsFarming", false);
-            Debug.Log("클릭으로 파밍 눌렀는데 파밍 불가능한 상태");
+            //Debug.Log("클릭으로 파밍 눌렀는데 파밍 불가능한 상태");
         }
     }
 
@@ -478,12 +484,24 @@ public class CharactorController : MonoBehaviour
         ani.SetBool("IsFarming", false);
         weaponParticle.enabled = false;
         isFarming = false;
-        Debug.Log("애니메이션 끝남");
+        //Debug.Log("애니메이션 끝남");
     }
 
     void OffEffect()
     {
 
+    }
+
+    public void SerFarmingPickCollider()
+    {
+        if(pickCollider.enabled)
+        {
+            pickCollider.enabled = false;
+        }
+        else
+        {
+            pickCollider.enabled = true;
+        }        
     }
     #endregion    
 }
